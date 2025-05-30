@@ -1,8 +1,9 @@
 const { Pool } = require('pg');
+require('dotenv').config();
 
 const pool = new Pool({
-  user: "avnadmin",
-  password: "AVNS_E1IlQTZ6g2QARmmT1NQ",
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_PASSWORD,
   host: "task4-db-bulash2006-d3fd.j.aivencloud.com",
   port: 10538,
   database: "defaultdb",
@@ -52,7 +53,7 @@ const initializeDatabase = async () => {
       CREATE UNIQUE INDEX IF NOT EXISTS idx_email ON users(email);
     `);
     console.log('Database initialized successfully');
-    
+
     const res = await pool.query('SELECT NOW()');
     console.log('Connected at:', res.rows[0]);
   } catch (err) {
