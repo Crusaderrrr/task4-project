@@ -6,7 +6,7 @@ import { AuthContext } from '../context/AuthContext';
 function UserManagementPage() {
   const { user, isBlocked } = useContext(AuthContext);
 
-  if (!user) return <Navigate to="/login" />;
+  if (!user) return <Navigate to='/login'/>;
   if (isBlocked) return <Navigate to="/login" />;
 
   return (

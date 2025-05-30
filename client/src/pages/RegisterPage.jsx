@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import background_image from '../assets/background_image.webp'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { AuthContext } from '../context/AuthContext';
 
 function RegisterPage() {
   const navigate = useNavigate();
+  const { setUser } = useContext(AuthContext);
   const [alertMessage, setAlertMessage] = useState('');
   const [alertType, setAlertType] = useState('');
   const [email, setEmail] = useState('');
@@ -42,11 +44,12 @@ function RegisterPage() {
       });
 
       if (response.status === 201) {
-        setAlertMessage('Registration successful!');
+        const { userId } = response.data
+        localStorage.setItem('userId', userId);
+        setUser({ id: userId });
+        setAlertMessage('Registration successful!\nNow you need to log in.');
         setAlertType('success');
-        setTimeout(() => {
-          navigate('/table');
-        }, 1000);
+        navigate('/login');
       }
     } catch (err) {
       setAlertMessage(err.response?.data?.message || 'Registration failed');

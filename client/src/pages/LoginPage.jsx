@@ -6,7 +6,7 @@ import { AuthContext } from '../context/AuthContext';
 
 function LoginPage() {
   const navigate = useNavigate();
-  const { setUser } = useContext(AuthContext); // Access setUser from AuthContext
+  const { setUser } = useContext(AuthContext);
   const [alertMessage, setAlertMessage] = useState('');
   const [alertType, setAlertType] = useState('');
   const [email, setEmail] = useState('');
