@@ -7,7 +7,7 @@ const users = require('./routes/users');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({ origin: 'https://beamish-bubblegum-14d5bc.netlify.app' })); 
 
 app.use('/api/auth', auth);
 app.use('/api/users',checkUserStatus, users);
