@@ -4,7 +4,7 @@ require('dotenv').config();
 const pool = new Pool({
   user: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWORD,
-  host: "task4-db-bulash2006-d3fd.j.aivencloud.com",
+  host: process.env.DATABASE_HOSTNAME,
   port: 10538,
   database: "defaultdb",
   ssl: {
