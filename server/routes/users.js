@@ -26,7 +26,6 @@ router.post('/block', async (req, res) => {
   }
 });
 
-// Unblock users
 router.post('/unblock', async (req, res) => {
   const { userIds } = req.body;
   try {
@@ -40,7 +39,6 @@ router.post('/unblock', async (req, res) => {
   }
 });
 
-// Delete users
 router.delete('/', async (req, res) => {
   const { userIds } = req.body;
   try {

@@ -3,7 +3,7 @@ const BASE_URL = import.meta.env.VITE_API_URL;
 export const fetchUsers = async () => {
   try {
     const userId = localStorage.getItem('userId');
-    const response = await fetch('http://localhost:3001/api/users', {
+    const response = await fetch(`${BASE_URL}/api/users`, {
       headers: {
         'Content-Type': 'application/json',
         'user-id': userId
@@ -25,7 +25,7 @@ export const fetchUsers = async () => {
 
 export const blockUsers = async (userIds) => {
   try {
-    const response = await fetch('http://localhost:3001/api/users/block', {
+    const response = await fetch(`${BASE_URL}/api/users/block`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ export const blockUsers = async (userIds) => {
 };
 
 export const unblockUsers = async (userIds) => {
-  const response = await fetch('http://localhost:3001/api/users/unblock', {
+  const response = await fetch(`${BASE_URL}/api/users/unblock`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ export const unblockUsers = async (userIds) => {
 };
 
 export const deleteUsers = async (userIds) => {
-  const response = await fetch('http://localhost:3001/api/users/', {
+  const response = await fetch(`${BASE_URL}/api/users/`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
