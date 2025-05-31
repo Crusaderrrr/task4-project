@@ -5,6 +5,7 @@ export const AuthContext = createContext();
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [isBlocked, setIsBlocked] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const userId = localStorage.getItem('userId');
@@ -27,6 +28,8 @@ export function AuthProvider({ children }) {
       checkStatus();
       const interval = setInterval(checkStatus, 30000);
       return () => clearInterval(interval);
+    } else {
+      setIsLoading(false);
     }
   }, []);
 
@@ -40,7 +43,6 @@ export function AuthProvider({ children }) {
         setUser(null);
         setIsBlocked(false);
         localStorage.removeItem('userId');
-        window.location.href = '/login';
       }
     }}>
       {children}

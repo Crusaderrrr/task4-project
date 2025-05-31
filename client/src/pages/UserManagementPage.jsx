@@ -4,10 +4,11 @@ import UserTable from '../components/UserTable';
 import { AuthContext } from '../context/AuthContext';
 
 function UserManagementPage() {
-  const { user, isBlocked } = useContext(AuthContext);
+  const { user, isBlocked, isLoading } = useContext(AuthContext);
 
-  if (!user) return <Navigate to='/login'/>;
-  if (isBlocked) return <Navigate to="/login" />;
+  if (!user && isBlocked) {
+    return <Navigate to='/login' replace/>
+  } 
 
   return (
     <div>
