@@ -37,7 +37,7 @@ function RegisterPage() {
         return;
       }
 
-      const response = await axios.post('http://localhost:3001/api/auth/register', {
+      const response = await axios.post('https://task4-project.onrender.com/api/auth/register', {
         name: username,
         email,
         password

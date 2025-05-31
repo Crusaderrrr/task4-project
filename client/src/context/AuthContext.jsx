@@ -13,7 +13,7 @@ export function AuthProvider({ children }) {
       setUser({ id: userId });
       const checkStatus = async () => {
         try {
-          const response = await fetch('http://localhost:3001/api/users', {
+          const response = await fetch('https://task4-project.onrender.com/api/users', {
             headers: { 'user-id': userId },
           });
           if (response.status === 403) {
